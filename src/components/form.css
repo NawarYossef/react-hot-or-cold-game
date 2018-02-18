@@ -1,0 +1,16 @@
+.form-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+form {
+  width: 40%;
+  margin: 0 auto;
+  background-color: rgb(55, 55, 165);
+}
+
+.h2-wrapper {
+  height: 50px;
+  background-color: pink;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+import './app.css';
+import Description from './description';
+import Game from './game';
+import RestartGame from './restart-game'
+
+export default class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+     gameDescription: 'hide',
+    //  game: <Game />
+    game: () => <Game />
+    }
+  }
+
+  newGame() {
+    this.setState({
+      // why use a callback function instead of just assigning the component as a value?.
+      // game:  <Game />
+      game: () => <Game />
+    });
+  }
+
+  handleDescriptionVisibility(val) {
+   this.setState({gameDescription: val});
+  }
+
+  render() {
+    const Game = this.state.game
+    if(this.state.gameDescription === 'hide') {
+      return (
+        <div>
+          <header>
+            <RestartGame onClick={this.newGame.bind(this)}/>
+            <button onClick={() => this.handleDescriptionVisibility('show')}>+What</button>
+          </header>
+          <Game />
+          {/*Game*/}
+        </div>
+      )
+    }
+    return (
+      <Description onClick={() => this.handleDescriptionVisibility('hide')}/>
+    )
+
+  }
+}
